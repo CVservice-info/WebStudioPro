@@ -1,323 +1,291 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<!-- 🔍 SEO -->
-<title>Website laten maken | WebStudio Pro Nederland</title>
+<title>WebStudio Pro | Premium Webdesign Bureau</title>
 
-<meta name="description" content="Professionele websites laten maken die klanten opleveren. Webdesign voor ondernemers in Nederland. Snel, modern en conversiegericht.">
-<meta name="keywords" content="website laten maken, webdesign Nederland, webdesigner, website voor bedrijf, professionele website, goedkope website">
-<meta name="author" content="WebStudio Pro">
+<meta name="description" content="Premium websites die klanten opleveren voor ondernemers in Nederland. Modern, snel en conversiegericht webdesign.">
 
-<meta property="og:title" content="Website laten maken | WebStudio Pro">
-<meta property="og:description" content="Premium websites die klanten opleveren voor ondernemers in Nederland.">
-<meta property="og:type" content="website">
-
-<!-- EMAILJS -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: #0b0f1a;
-  color: white;
-  scroll-behavior: smooth;
+/* =======================
+   BASE
+======================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter, sans-serif;
 }
 
-/* HERO */
-.hero {
-  background: linear-gradient(135deg,#2563eb,#7c3aed);
-  padding: 20px;
+body{
+  background:#070B14;
+  color:white;
+  overflow-x:hidden;
 }
 
-nav {
+/* =======================
+   NAV
+======================= */
+
+nav{
   display:flex;
   justify-content:space-between;
-  padding:10px 20px;
+  padding:20px 40px;
+  position:sticky;
+  top:0;
+  backdrop-filter:blur(12px);
+  background:rgba(10,15,30,0.7);
+  z-index:10;
 }
 
-.hero-content {
-  text-align:center;
-  padding:90px 20px;
-}
-
-.hero h1 {
-  font-size: 46px;
-}
-
-.hero p {
-  max-width:700px;
-  margin:auto;
-  opacity:0.9;
-}
-
-/* BUTTON */
-.btn {
-  display:inline-block;
-  margin-top:20px;
-  padding:12px 22px;
-  background:white;
-  color:black;
-  border-radius:8px;
-  font-weight:bold;
+nav a{
+  color:white;
   text-decoration:none;
+  margin-left:20px;
+  opacity:0.7;
+  transition:0.3s;
 }
 
-/* SECTIONS */
-section {
-  padding:70px 20px;
+nav a:hover{
+  opacity:1;
+}
+
+.logo{
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+/* =======================
+   HERO
+======================= */
+
+.hero{
+  padding:140px 20px;
   text-align:center;
+  position:relative;
 }
 
-.features {
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  flex-wrap:wrap;
-  background:#111827;
-  padding:30px;
+.hero::before{
+  content:"";
+  position:absolute;
+  width:600px;
+  height:600px;
+  background:#2563eb;
+  filter:blur(160px);
+  opacity:0.3;
+  top:-200px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:-1;
 }
 
-.cards {
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  flex-wrap:wrap;
-}
-
-.card {
-  background:#1f2937;
-  padding:25px;
-  border-radius:12px;
-  width:280px;
-  cursor:pointer;
-  transition:0.2s;
-}
-
-.card:hover {
-  transform:scale(1.05);
-}
-
-.highlight {
-  border:2px solid #7c3aed;
-}
-
-.price {
-  font-size:28px;
-  font-weight:bold;
-}
-
-/* TEXT */
-.text {
-  max-width:750px;
+.hero h1{
+  font-size:52px;
+  max-width:900px;
   margin:auto;
-  opacity:0.9;
+  letter-spacing:-1px;
+}
+
+.hero p{
+  opacity:0.7;
+  margin-top:20px;
+  max-width:700px;
+  margin-left:auto;
+  margin-right:auto;
   line-height:1.6;
 }
 
-/* FORM */
-form {
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  max-width:420px;
-  margin:auto;
-}
-
-input, textarea {
-  padding:12px;
-  border:none;
-  border-radius:6px;
-}
-
-button {
-  padding:12px;
-  background:#2563eb;
-  border:none;
-  color:white;
-  border-radius:6px;
-  cursor:pointer;
-}
-
-/* WHATSAPP */
-.whatsapp {
+.btn{
   display:inline-block;
-  margin-top:20px;
-  padding:12px 18px;
-  background:#25D366;
+  margin-top:30px;
+  padding:14px 24px;
+  background:#2563eb;
   color:white;
-  border-radius:8px;
   text-decoration:none;
-  font-weight:bold;
+  border-radius:12px;
+  transition:0.3s;
 }
 
-/* FAQ */
-.faq {
-  max-width:700px;
-  margin:auto;
-  text-align:left;
+.btn:hover{
+  transform:translateY(-3px);
 }
 
-footer {
+/* =======================
+   SECTIONS
+======================= */
+
+section{
+  padding:90px 20px;
   text-align:center;
-  padding:20px;
-  background:#020617;
+}
+
+h2{
+  font-size:34px;
+  margin-bottom:20px;
+  letter-spacing:-0.5px;
+}
+
+p{
+  opacity:0.7;
+}
+
+/* =======================
+   CARDS
+======================= */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  max-width:1100px;
+  margin:auto;
+  margin-top:40px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  padding:30px;
+  border-radius:18px;
+  transition:0.3s;
+  backdrop-filter:blur(10px);
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  border-color:#2563eb;
+}
+
+/* =======================
+   PRICING
+======================= */
+
+.price{
+  font-size:28px;
+  font-weight:700;
+  margin:10px 0;
+}
+
+.highlight{
+  border:2px solid #2563eb;
+  transform:scale(1.05);
+}
+
+/* =======================
+   CTA
+======================= */
+
+.cta{
+  background:linear-gradient(135deg,#2563eb,#7c3aed);
+  padding:90px 20px;
+  text-align:center;
+  margin-top:40px;
+}
+
+.cta h2{
+  color:white;
+}
+
+.cta .btn{
+  background:white;
+  color:black;
+}
+
+/* =======================
+   WHATSAPP
+======================= */
+
+.whatsapp{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:#25D366;
+  padding:14px 16px;
+  border-radius:50px;
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 </style>
-
 </head>
 
 <body>
 
-<!-- HERO -->
-<header class="hero">
-
 <nav>
-  <h2>WebStudio Pro</h2>
-  <a href="#contact" style="color:white;">Contact</a>
+  <div class="logo">WebStudio Pro</div>
+  <div>
+    <a href="#">Home</a>
+    <a href="#">Diensten</a>
+    <a href="#">Werkwijze</a>
+    <a href="#">Prijzen</a>
+    <a href="#">Contact</a>
+  </div>
 </nav>
 
-<div class="hero-content">
-
-<!-- 🔥 SEO H1 -->
-<h1>Professionele websites laten maken die klanten opleveren</h1>
-
-<p>
-Wij bouwen moderne websites voor ondernemers in Nederland die meer klanten, aanvragen en omzet willen.
-</p>
-
-<a href="#pricing" class="btn">Bekijk pakketten</a>
-
+<!-- HERO -->
+<div class="hero">
+  <h1>Premium websites die klanten opleveren</h1>
+  <p>Wij bouwen moderne, snelle en conversiegerichte websites voor ondernemers die willen groeien.</p>
+  <a class="btn" href="#pricing">Bekijk pakketten</a>
 </div>
-</header>
 
-<!-- FEATURES -->
-<section class="features">
-  <div>⚡ Snel online</div>
-  <div>🎨 Premium design</div>
-  <div>📱 Mobiel perfect</div>
-  <div>🚀 Conversie gericht</div>
-</section>
-
-<!-- WHAT IS IT -->
+<!-- USP -->
 <section>
-  <h2>Wat wij doen</h2>
-  <p class="text">
-    Wij maken professionele websites voor ondernemers in Nederland.
-    Onze websites zijn snel, mobielvriendelijk en gericht op het genereren van klanten en aanvragen.
-  </p>
+  <h2>Waarom WebStudio Pro?</h2>
+
+  <div class="grid">
+    <div class="card">⚡ Supersnelle websites</div>
+    <div class="card">📱 Perfect mobiel</div>
+    <div class="card">🎯 Conversie gericht</div>
+    <div class="card">🚀 SEO geoptimaliseerd</div>
+  </div>
 </section>
 
-<!-- PACKAGES -->
+<!-- PRICING -->
 <section id="pricing">
   <h2>Pakketten</h2>
 
-  <div class="cards">
+  <div class="grid">
 
-    <div class="card" onclick="selectPackage('Starter €129')">
+    <div class="card">
       <h3>Starter</h3>
-      <p class="price">€129</p>
-      <p>Basis website + contact</p>
+      <div class="price">€129</div>
+      <p>Basis website</p>
     </div>
 
-    <div class="card highlight" onclick="selectPackage('Business €299')">
-      <h3>Business ⭐</h3>
-      <p class="price">€299</p>
-      <p>Meest gekozen + betere conversie</p>
+    <div class="card highlight">
+      <h3>Business</h3>
+      <div class="price">€299</div>
+      <p>Meest gekozen</p>
     </div>
 
-    <div class="card" onclick="selectPackage('Premium €599')">
+    <div class="card">
       <h3>Premium</h3>
-      <p class="price">€599</p>
-      <p>Complete website + SEO + optimalisatie</p>
+      <div class="price">€599</div>
+      <p>Volledig pakket</p>
     </div>
 
   </div>
 </section>
 
-<!-- SEO EXTRA -->
+<!-- CTA -->
+<div class="cta">
+  <h2>Klaar om te groeien?</h2>
+  <a class="btn" href="#contact">Neem contact op</a>
+</div>
+
+<!-- FOOTER -->
 <section>
-  <h2>Website laten maken in Nederland</h2>
-  <p class="text">
-    Ben je op zoek naar een professionele website laten maken?
-    Wij helpen ondernemers met moderne websites die klanten opleveren.
-    Snel geleverd, betaalbaar en volledig op maat.
-  </p>
+  <p>© 2026 WebStudio Pro</p>
 </section>
 
-<!-- FAQ -->
-<section class="faq">
-  <h2>FAQ</h2>
-
-  <p><b>Hoe snel klaar?</b><br>2–5 dagen</p>
-  <p><b>Moet ik zelf iets doen?</b><br>Alleen info aanleveren</p>
-  <p><b>Kan ik aanpassen?</b><br>Ja kleine wijzigingen</p>
-  <p><b>Is het mobiel?</b><br>Ja volledig responsive</p>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <h2>Vraag jouw website aan</h2>
-
-  <form id="form">
-    <input type="text" id="name" placeholder="Naam" required/>
-    <input type="email" id="email" placeholder="Email" required/>
-    <textarea id="message" placeholder="Jouw bericht / pakket" required></textarea>
-
-    <button type="submit">Verstuur aanvraag</button>
-  </form>
-
-  <p id="status"></p>
-
-  <a class="whatsapp" href="https://wa.me/31625166241" target="_blank">
-    💬 WhatsApp direct
-  </a>
-</section>
-
-<footer>
-  © 2026 WebStudio Pro
-</footer>
-
-<script>
-/* EMAILJS */
-(function(){
-  emailjs.init("ff3x9snV40S-ijke0");
-})();
-
-/* PACKAGE SELECT */
-function selectPackage(pkg){
-  document.getElementById("message").value =
-    "Ik wil dit pakket: " + pkg;
-
-  document.getElementById("contact").scrollIntoView({
-    behavior: "smooth"
-  });
-}
-
-/* FORM */
-document.getElementById("form").addEventListener("submit", function(e){
-  e.preventDefault();
-
-  document.getElementById("status").innerText = "Versturen...";
-
-  emailjs.send("service_z81n99u", "template_csno00g", {
-    from_name: document.getElementById("name").value,
-    from_email: document.getElementById("email").value,
-    message: document.getElementById("message").value
-  })
-  .then(() => {
-    document.getElementById("status").innerText = "Succes! We nemen contact op.";
-    document.getElementById("form").reset();
-  })
-  .catch(() => {
-    document.getElementById("status").innerText = "Fout, probeer opnieuw.";
-  });
-});
-</script>
+<a class="whatsapp" href="https://wa.me/31625166241">WhatsApp</a>
 
 </body>
 </html>
