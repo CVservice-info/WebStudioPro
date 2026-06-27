@@ -11,6 +11,7 @@ body {
   font-family: Arial;
   background: #0b0f1a;
   color: white;
+  scroll-behavior: smooth;
 }
 
 .hero {
@@ -70,6 +71,12 @@ section {
   padding:20px;
   border-radius:12px;
   width:240px;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
 
 .highlight {
@@ -157,17 +164,17 @@ footer {
   <h2>Pakketten</h2>
 
   <div class="cards">
-    <div class="card">
+    <div class="card" onclick="selectPackage('Starter €129')">
       <h3>Starter</h3>
       <p class="price">€129</p>
     </div>
 
-    <div class="card highlight">
+    <div class="card highlight" onclick="selectPackage('Business €299')">
       <h3>Business ⭐</h3>
       <p class="price">€299</p>
     </div>
 
-    <div class="card">
+    <div class="card" onclick="selectPackage('Premium €599')">
       <h3>Premium</h3>
       <p class="price">€599</p>
     </div>
@@ -179,28 +186,24 @@ footer {
 
   <p><b>Hoe snel klaar?</b><br>Binnen 2–5 dagen</p>
   <p><b>Moet ik iets doen?</b><br>Alleen info aanleveren</p>
-  <p><b>Is het mobiel geschikt?</b><br>Ja altijd</p>
-  <p><b>Kan ik wijzigingen krijgen?</b><br>Ja kleine aanpassingen</p>
+  <p><b>Kan ik aanpassingen krijgen?</b><br>Ja kleine fixes</p>
 </section>
 
 <section id="contact">
-  <h2>Contact / Aanvraag</h2>
+  <h2>Contact</h2>
 
   <form id="form">
     <input type="text" id="name" placeholder="Naam" required/>
     <input type="email" id="email" placeholder="Email" required/>
-    <textarea id="message" placeholder="Wat wil je?" required></textarea>
+    <textarea id="message" placeholder="Jouw bericht / gekozen pakket" required></textarea>
 
-    <button type="submit">Verstuur</button>
+    <button type="submit">Verstuur aanvraag</button>
   </form>
 
   <p id="status"></p>
 
-  <!-- ✅ FIXED WHATSAPP -->
-  <a class="whatsapp"
-     href="https://wa.me/31625166241"
-     target="_blank">
-     💬 WhatsApp direct
+  <a class="whatsapp" href="https://wa.me/31625166241" target="_blank">
+    💬 WhatsApp
   </a>
 </section>
 
@@ -209,10 +212,22 @@ footer {
 </footer>
 
 <script>
+/* EMAILJS INIT */
 (function(){
   emailjs.init("ff3x9snV40S-ijke0");
 })();
 
+/* PACKAGE SELECT */
+function selectPackage(pkg){
+  document.getElementById("message").value =
+    "Ik wil het pakket: " + pkg;
+
+  document.getElementById("contact").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+/* FORM SEND */
 document.getElementById("form").addEventListener("submit", function(e){
   e.preventDefault();
 
@@ -224,7 +239,7 @@ document.getElementById("form").addEventListener("submit", function(e){
     message: document.getElementById("message").value
   })
   .then(() => {
-    document.getElementById("status").innerText = "Succes! Ik neem contact op.";
+    document.getElementById("status").innerText = "Succes! We nemen contact op.";
     document.getElementById("form").reset();
   })
   .catch(() => {
