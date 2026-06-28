@@ -4,94 +4,165 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WebStudio Pro | Websites die klanten opleveren</title>
+<title>WebStudio Pro</title>
 
-<meta name="description" content="Premium webdesign voor ondernemers. Websites die klanten en omzet opleveren. SEO geoptimaliseerd en conversiegericht.">
-<meta name="keywords" content="website laten maken, webdesign, website voor bedrijf, SEO website, professionele website Nederland">
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#0b0f1a;
+color:white;
+}
 
-<link rel="stylesheet" href="css/style.css">
+nav{
+display:flex;
+justify-content:space-between;
+padding:20px;
+background:#111827;
+}
 
-<!-- EmailJS -->
+.hero{
+text-align:center;
+padding:100px 20px;
+}
+
+.hero h1{
+font-size:40px;
+}
+
+section{
+padding:60px 20px;
+text-align:center;
+}
+
+.grid{
+display:flex;
+gap:20px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.card{
+background:#1f2937;
+padding:20px;
+border-radius:12px;
+width:250px;
+}
+
+form{
+display:flex;
+flex-direction:column;
+gap:10px;
+max-width:350px;
+margin:auto;
+}
+
+input,textarea{
+padding:10px;
+border:none;
+border-radius:6px;
+}
+
+button{
+padding:10px;
+background:white;
+border:none;
+cursor:pointer;
+border-radius:6px;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+padding:12px;
+border-radius:50px;
+color:white;
+text-decoration:none;
+}
+</style>
+
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 
 <body>
 
 <nav>
-  <div class="logo">WebStudio Pro</div>
-  <a href="#contact">Contact</a>
+<div>WebStudio Pro</div>
 </nav>
 
 <header class="hero">
-  <h1>Websites die klanten opleveren, niet alleen mooi zijn</h1>
-  <p>Premium webdesign voor ondernemers die willen groeien via Google en conversie.</p>
-  <a href="#pakketten" class="btn">Bekijk pakketten</a>
+<h1>Websites die klanten opleveren</h1>
+<p>Premium webdesign voor ondernemers</p>
 </header>
 
-<section id="pakketten">
-  <h2>Pakketten</h2>
+<section>
+<h2>Pakketten</h2>
 
-  <div class="grid">
+<div class="grid">
 
-    <div class="card" onclick="selectPackage('Starter €129')">
-      <h3>Starter</h3>
-      <p>€129</p>
-      <p>1 pagina website + contactformulier</p>
-      <p><b>Voor kleine ondernemers die snel online willen.</b></p>
-    </div>
+<div class="card">
+<h3>Starter</h3>
+<p>€129</p>
+<p>1 pagina website</p>
+</div>
 
-    <div class="card highlight" onclick="selectPackage('Business €299')">
-      <h3>Business ⭐</h3>
-      <p>€299</p>
-      <p>Meest gekozen</p>
-      <p><b>Volledige website + SEO structuur + betere conversie</b></p>
-    </div>
+<div class="card">
+<h3>Business</h3>
+<p>€299</p>
+<p>Meest gekozen</p>
+</div>
 
-    <div class="card" onclick="selectPackage('Premium €599')">
-      <h3>Premium</h3>
-      <p>€599</p>
-      <p>Alles inbegrepen</p>
-      <p><b>High-end website + maximale uitstraling + strategie</b></p>
-    </div>
+<div class="card">
+<h3>Premium</h3>
+<p>€599</p>
+<p>Complete website</p>
+</div>
 
-  </div>
+</div>
 </section>
 
-<section id="info">
-  <h2>Wat maakt het verschil?</h2>
+<section>
+<h2>Contact</h2>
 
-  <div class="grid">
-    <div class="card">✔ SEO geoptimaliseerd voor Google</div>
-    <div class="card">✔ Mobiel perfect (90% bezoekers)</div>
-    <div class="card">✔ Conversiegericht design</div>
-    <div class="card">✔ Snelle laadtijd</div>
-  </div>
+<form id="form">
+<input id="name" placeholder="Naam" required>
+<input id="email" placeholder="Email" required>
+<textarea id="message" placeholder="Bericht" required></textarea>
+
+<button type="submit">Versturen</button>
+</form>
+
+<p id="status"></p>
+
+<a class="whatsapp" href="https://wa.me/31625166241">WhatsApp</a>
 </section>
 
-<section id="contact">
-  <h2>Contact</h2>
+<script>
+emailjs.init("fg3x9snV40S-ijke0");
 
-  <p class="sub">Vragen of offerte aanvragen</p>
+document.getElementById("form").addEventListener("submit", function(e){
+e.preventDefault();
 
-  <form id="form">
-    <input id="name" placeholder="Naam" required>
-    <input id="email" placeholder="Email" required>
-    <textarea id="message" placeholder="Bericht of gekozen pakket" required></textarea>
+document.getElementById("status").innerText = "Versturen...";
 
-    <button type="submit">Versturen</button>
-  </form>
+emailjs.send("service_z81n99u","template_csno00g",{
+from_name: document.getElementById("name").value,
+from_email: document.getElementById("email").value,
+message: document.getElementById("message").value
+})
 
-  <p id="status"></p>
+.then(()=>{
+document.getElementById("status").innerText = "Succes!";
+document.getElementById("form").reset();
+})
 
-  <a class="whatsapp" href="https://wa.me/31625166241" target="_blank">
-    WhatsApp direct
-  </a>
-</section>
+.catch(()=>{
+document.getElementById("status").innerText = "Fout bij verzenden";
+});
+});
+</script>
 
-<footer>
-  © WebStudio Pro
-</footer>
-
-<script src="js/script.js"></script>
 </body>
 </html>
